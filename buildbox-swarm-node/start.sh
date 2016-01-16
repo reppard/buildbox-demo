@@ -15,7 +15,7 @@ printf "\n****************************************\n\n"
 printf "Master:    $MASTER_URL\n"
 printf "Name:      $NODE_NAME\n"
 printf "Label:     $NODE_LABEL\n"
-printf "Executors: $EXECUTORS\n"
+printf "Executors: $NODE_EXECUTORS\n"
 
 printf "\n\n****************************************\n"
 
