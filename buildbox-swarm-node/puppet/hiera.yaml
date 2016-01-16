@@ -1,0 +1,6 @@
+---
+:yaml:
+    :datadir: /puppet
+
+:hierarchy:
+  - common
