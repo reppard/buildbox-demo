@@ -17,8 +17,9 @@ RUN ln -sf /bin/bash /bin/sh
 # The place where to put the DSL files for the Seed Job to run
 RUN mkdir -p /usr/share/jenkins/ref/jobs/SeedJob/workspace/
 
-COPY plugins.txt /usr/share/jenkins/plugins.txt
-COPY build/config.groovy /usr/share/jenkins/ref/init.groovy.d/config.groovy
+ADD plugins.txt /usr/share/jenkins/
+ADD build/config.groovy /usr/share/jenkins/ref/init.groovy.d/
+ADD build/create_seed_job.groovy /usr/share/jenkins/ref/init.groovy.d/
 
 RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
 
