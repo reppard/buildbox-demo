@@ -4,14 +4,16 @@ data:
   volumes:
     - /var/jenkins_home
 master:
-  image: reppard/buildbox-jenkins-master
+  #  image: reppard/buildbox-jenkins-master
+  build: ./buildbox-jenkins-master
   ports:
     - "8080:8080"
     - "5000:5000"
   volumes_from:
     - data
 swarm1:
-  image: reppard/buildbox-swarm-node
+  #  image: reppard/buildbox-swarm-node
+  build: ./buildbox-swarm-node
   links:
     - master
   environment:
@@ -19,7 +21,8 @@ swarm1:
     - NODE_LABEL=dev
     - NODE_EXECUTORS=2
 swarm2:
-  image: reppard/buildbox-swarm-node
+  #  image: reppard/buildbox-swarm-node
+  build: ./buildbox-swarm-node
   links:
     - master
   environment:
