@@ -1,6 +1,7 @@
-pipelineSeedJob = job('CommonPipelineSeedJob')
+pipelineSeedJob = job {}
 
 pipelineSeedJob.with {
+  name 'CommonPipelineSeedJob'
   description '''
     This is the Common job that spawns pipelines.
     It takes the following arguments and generates a pipeline and the jobs that make up each stage of the pipeline.
