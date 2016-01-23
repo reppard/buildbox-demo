@@ -28,7 +28,7 @@ pipelineSeedJob.with {
     git {
       remote {
         url('${APP_REPO}')
-        branch('{$APP_REPO_BRANCH}')
+        branch('${APP_REPO_BRANCH}')
       }
     }
   }
