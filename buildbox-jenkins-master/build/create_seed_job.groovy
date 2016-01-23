@@ -1,7 +1,14 @@
 import jenkins.model.*
 
 def jobName = "SeedJob"
-def git_url = System.getenv("SEED_JOBS_URL") || "https://github.com/reppard/buildbox-demo.git"
+def git_url = ""
+
+if (System.getenv("SEED_JOBS_URL")){
+  git_url = System.getenv("SEED_JOBS_URL")
+}else{
+  git_url = "https://github.com/reppard/buildbox-demo.git"
+}
+
 def scm = '''<scm class="hudson.scm.NullSCM"/>'''
 
 scm = """\
