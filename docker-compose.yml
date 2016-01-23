@@ -28,4 +28,4 @@ swarm2:
   environment:
     - NODE_NAME=BuildboxSwarmNode02
     - NODE_LABEL=dev
-    - EXECUTORS=2
+    - NODE_EXECUTORS=2
