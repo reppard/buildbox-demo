@@ -1,5 +1,5 @@
 data:
-  image: reppard/buildbox-jenkins-master
+  image: jenkins:1.625.2
   command: /bin/true
   volumes:
     - /var/jenkins_home
