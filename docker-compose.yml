@@ -11,21 +11,18 @@ master:
     - "5000:5000"
   volumes_from:
     - data
-swarm1:
+swarm:
   #  image: reppard/buildbox-swarm-node
   build: ./buildbox-swarm-node
   links:
     - master
   environment:
-    - NODE_NAME=BuildboxSwarmNode01
+    - NODE_NAME=BuildboxSwarmNode
     - NODE_LABEL=dev
     - NODE_EXECUTORS=2
-swarm2:
-  #  image: reppard/buildbox-swarm-node
-  build: ./buildbox-swarm-node
-  links:
-    - master
-  environment:
-    - NODE_NAME=BuildboxSwarmNode02
-    - NODE_LABEL=dev
-    - NODE_EXECUTORS=2
+seagull:
+  image: tobegit3hub/seagull
+  ports:
+    - "65138:10086"
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
