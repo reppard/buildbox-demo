@@ -1,0 +1,8 @@
+forge 'forge.puppetlabs.com'
+
+mod 'puppetlabs/concat'
+mod 'puppetlabs/stdlib'
+mod 'maestrodev/wget'
+mod 'stahnma/epel'
+mod 'garethr/docker', '5.0.0'
+

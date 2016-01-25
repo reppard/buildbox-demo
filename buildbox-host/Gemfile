@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+
+# required for image building only
+# used by scripts/fetch_puppet_deps.sh
+group :puppet do
+  gem 'puppet-lint'
+  gem 'r10k', '2.0.3'
+end

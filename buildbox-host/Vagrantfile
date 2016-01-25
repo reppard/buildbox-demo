@@ -1,0 +1,41 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  # Pick a Centos Image
+  config.vm.box = "boxcutter/centos71"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.gui = false
+    # Uncomment the line below when on VPN
+    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    vb.memory = "1024"
+  end
+
+  config.vm.network :forwarded_port, guest: 65138, host: 65138
+  config.vm.network :forwarded_port, guest: 8080, host: 8080
+  config.vm.network :forwarded_port, guest: 50000, host: 50000
+  config.vm.network :forwarded_port, guest: 2375, host:2375
+
+  #############################################################################
+  # Pre-Requisites:
+  #   During normal build time, this stuff will be inherited from # the source
+  #   AMI defined in the Packer template.
+  #############################################################################
+  config.vm.provision 'shell', inline: 'yum -y install epel-release'
+  config.vm.provision 'shell', inline: 'yum -y update'
+  config.vm.provision 'shell', inline: 'yum -y install git rubygems puppet'
+
+  #############################################################################
+  # Configuration:
+  #   During Normal build time, this stuff will be run by the Packer file
+  #   and masterless Puppet provisioners.
+  #############################################################################
+  config.vm.provision 'file', source: 'hiera', destination: '/tmp'
+  config.vm.provision 'puppet' do |p|
+    p.manifests_path    = 'puppet/manifests'
+    p.manifest_file     = 'site.pp'
+    p.module_path       = 'puppet/modules'
+    p.hiera_config_path = 'puppet/hiera.yaml'
+  end
+end
