@@ -9,6 +9,8 @@ generateLoadJob.with {
   
   label 'dev'
 
+  concurrentBuild(true)
+
   steps {
     shell('''
       dd if=/dev/urandom of=/dev/null bs=1M count=256
