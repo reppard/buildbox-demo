@@ -2,3 +2,4 @@ buildbox-host/vendor/
 buildbox-host/.bundle/
 buildbox-host/Gemfile.lock
 buildbox-host/puppet/modules
+buildbox-host/.vagrant/
