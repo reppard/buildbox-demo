@@ -19,7 +19,7 @@ swarm:
   environment:
     - NODE_NAME=BuildboxSwarmNode
     - NODE_LABEL=dev
-    - NODE_EXECUTORS=2
+    - NODE_EXECUTORS=1
 seagull:
   image: tobegit3hub/seagull
   ports:
